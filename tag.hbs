@@ -1,22 +1,19 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
-<main class="gh-main gh-outer">
+<section class="post-list" style="padding-top: 60px;">
+  <div class="label-mono accent">CATEGORY</div>
+  <h1 style="font-family: var(--font-serif); font-size: 44px; margin: 12px 0 48px;">{{tag.name}}</h1>
 
-    {{#tag}}
-        <section class="gh-archive{{#if feature_image}} has-image{{/if}}{{#if @custom.show_publication_info_sidebar}} has-sidebar{{/if}} gh-inner">
-            <div class="gh-archive-inner">
-                <header class="gh-archive-wrapper">
-                    <h1 class="gh-article-title is-title">{{name}}</h1>
-                    {{#if description}}
-                        <p class="gh-article-excerpt">{{description}}</p>
-                    {{/if}}
-                </header>
-                {{> "feature-image"}}
-            </div>
-        </section>
-    {{/tag}}
-
-    {{> "components/post-list" feed="archive" postFeedStyle=@custom.post_feed_style showTitle=false showSidebar=@custom.show_publication_info_sidebar}}
-
-</main>
+  {{#foreach posts}}
+    <article class="post-card">
+      <div class="meta label-mono accent">
+        {{date published_at format="MMM DD, YYYY"}}
+      </div>
+      <h2><a href="{{url}}">{{title}}</a></h2>
+      {{#if @custom.show_post_excerpts}}
+        <p class="excerpt">{{excerpt words="32"}}</p>
+      {{/if}}
+      <div class="footer-meta">{{reading_time}} · <a href="{{url}}">Read letter →</a></div>
+    </article>
+  {{/foreach}}
+</section>

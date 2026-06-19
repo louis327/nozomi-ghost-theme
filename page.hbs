@@ -1,26 +1,11 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
 {{#post}}
-
-<main class="gh-main">
-    <article class="gh-article {{post_class}}">
-
-        {{#match @page.show_title_and_feature_image}}
-            <header class="gh-article-header gh-canvas">
-                <h1 class="gh-article-title is-title">{{title}}</h1>
-                {{#if custom_excerpt}}
-                    <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
-                {{/if}}
-                {{> "feature-image"}}
-            </header>
-        {{/match}}
-
-        <section class="gh-content gh-canvas is-body">
-            {{content}}
-        </section>
-
-    </article>
-</main>
-
+<article class="post-full">
+  <h1>{{title}}</h1>
+  {{#if feature_image}}
+    <img class="feature-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}" />
+  {{/if}}
+  <div class="post-content">{{content}}</div>
+</article>
 {{/post}}
