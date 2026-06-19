@@ -1,13 +1,14 @@
 {{!< default}}
 
+{{#author}}
 <section class="post-list" style="padding-top: 60px;">
   <div class="label-mono accent">AUTHOR</div>
-  <h1 style="font-family: var(--font-serif); font-size: 44px; margin: 12px 0 8px;">{{author.name}}</h1>
-  {{#if author.bio}}
-    <p style="color: var(--text-secondary); max-width: 600px; margin: 0 0 48px;">{{author.bio}}</p>
+  <h1 style="font-family: var(--font-serif); font-size: 44px; margin: 12px 0 8px;">{{name}}</h1>
+  {{#if bio}}
+    <p style="color: var(--text-secondary); max-width: 600px; margin: 0 0 48px;">{{bio}}</p>
   {{/if}}
 
-  {{#foreach posts}}
+  {{#foreach ../posts}}
     <article class="post-card">
       <div class="meta label-mono accent">
         {{date published_at format="MMM DD, YYYY"}}{{#if primary_tag}} · {{primary_tag.name}}{{/if}}
@@ -20,3 +21,4 @@
     </article>
   {{/foreach}}
 </section>
+{{/author}}
