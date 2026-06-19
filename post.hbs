@@ -1,29 +1,17 @@
 {{!< default}}
 
-{{#post}}
-<article class="post-full">
-  <div class="meta label-mono accent">
-    {{date published_at format="MMM DD, YYYY"}}{{#if primary_tag}} · {{primary_tag.name}}{{/if}}
-  </div>
-  <h1>{{title}}</h1>
-  <p class="byline">By {{primary_author.name}} · {{reading_time}}</p>
+<main class="site-main">
 
-  {{#if feature_image}}
-    <img class="feature-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}" />
-  {{/if}}
+    {{#post}}
+        {{> "content" width="wide"}}
+    {{/post}}
 
-  <div class="post-content">
-    {{content}}
-  </div>
+    {{#if @custom.show_related_posts}}
+        {{> "related-posts"}}
+    {{/if}}
 
-  <aside class="eop-cta" aria-label="Subscribe to {{@site.title}}">
-    <svg class="petal" viewBox="0 0 14 22" width="14" height="18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="fill: var(--accent); transform: rotate(-20deg);"><path d="M0,0 C3,-10 9,-16 0,-22 C-9,-16 -3,-10 0,0 Z" transform="translate(7, 22)"/></svg>
-    <h3>Get every new letter in your inbox.</h3>
-    <p class="fineprint">Free. Weekly. Unsubscribe anytime.</p>
-    <form class="form" data-members-form="signup">
-      <input type="email" name="email" placeholder="your@email.com" required />
-      <button type="submit">Subscribe</button>
-    </form>
-  </aside>
-</article>
-{{/post}}
+    {{#post}}
+        {{> "comments"}}
+    {{/post}}
+
+</main>

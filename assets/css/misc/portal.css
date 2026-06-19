@@ -1,0 +1,12 @@
+.home-template.with-full-cover:not(.portal-visible) .gh-portal-triggerbtn-iframe {
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Hide every sign-in trigger — Nozomi Letters exposes Subscribe only */
+[data-portal="signin"],
+.gh-portal-signin-trigger,
+a[href="#/portal/signin"],
+a[href*="#/portal/signin"] {
+    display: none !important;
+}

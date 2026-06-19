@@ -1,19 +1,32 @@
 {{!< default}}
 
-<section class="post-list" style="padding-top: 60px;">
-  <div class="label-mono accent">CATEGORY</div>
-  <h1 style="font-family: var(--font-serif); font-size: 44px; margin: 12px 0 48px;">{{tag.name}}</h1>
+<main class="site-main">
 
-  {{#foreach posts}}
-    <article class="post-card">
-      <div class="meta label-mono accent">
-        {{date published_at format="MMM DD, YYYY"}}
-      </div>
-      <h2><a href="{{url}}">{{title}}</a></h2>
-      {{#if @custom.show_post_excerpts}}
-        <p class="excerpt">{{excerpt words="32"}}</p>
-      {{/if}}
-      <div class="footer-meta">{{reading_time}} · <a href="{{url}}">Read letter →</a></div>
-    </article>
-  {{/foreach}}
-</section>
+    {{#tag}}
+    <section class="taxonomy">
+
+        {{#if feature_image}}
+            <div class="taxonomy-media u-placeholder square">
+                <img class="u-object-fit" src="{{img_url feature_image size="s"}}" alt="{{name}}">
+            </div>
+        {{/if}}
+
+        <header class="single-header gh-canvas">
+            <h1 class="single-title">{{name}}</h1>
+            {{#if description}}
+                <div class="single-excerpt">{{description}}</div>
+            {{/if}}
+        </header>
+
+    </section>
+    {{/tag}}
+
+    <div class="post-feed gh-feed gh-canvas">
+        {{#foreach posts}}
+            {{> "loop"}}
+        {{/foreach}}
+    </div>
+
+    {{pagination}}
+
+</main>

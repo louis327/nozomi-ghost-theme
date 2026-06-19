@@ -1,101 +1,144 @@
 {
     "name": "nozomi-letters",
-    "description": "Theme for 'The Last Decade of Freedom' — Letters by Louis Dharma on blog.nozomi.network",
-    "demo": "https://blog.nozomi.network",
-    "version": "0.1.0",
+    "description": "Theme for 'The Last Decade of Freedom' — Letters by Louis Dharma. Forked from Ghost Edition.",
+    "version": "0.2.0",
+    "private": true,
     "engines": {
-        "ghost": ">=5.0.0",
-        "node": ">=22.12.0"
+        "ghost": ">=5.0.0"
     },
     "license": "MIT",
-    "scripts": {
-        "dev": "gulp",
-        "zip": "gulp zip",
-        "build": "gulp build",
-        "test": "gscan ."
-    },
     "author": {
         "name": "Louis Dharma",
         "email": "louis@nozomi.network"
     },
-    "gpm": {
-        "type": "theme",
-        "categories": [
-            "Minimal",
-            "Magazine"
-        ]
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/louis327/nozomi-ghost-theme"
     },
     "keywords": [
         "ghost",
         "theme",
         "ghost-theme"
     ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/louis327/nozomi-ghost-theme.git"
+    "docs": "https://edition.ghost.io/about/",
+    "config": {
+        "posts_per_page": 10,
+        "image_sizes": {
+            "xs": {
+                "width": 150
+            },
+            "s": {
+                "width": 400
+            },
+            "m": {
+                "width": 750
+            },
+            "l": {
+                "width": 960
+            },
+            "xl": {
+                "width": 1140
+            },
+            "xxl": {
+                "width": 1920
+            }
+        },
+        "card_assets": true,
+        "custom": {
+            "navigation_layout": {
+                "type": "select",
+                "options": ["Logo on the left", "Logo in the middle", "Stacked"],
+                "default": "Logo on the left"
+            },
+            "title_font": {
+                "type": "select",
+                "options": [
+                    "Modern sans-serif",
+                    "Elegant serif"
+                ],
+                "default": "Elegant serif"
+            },
+            "body_font": {
+                "type": "select",
+                "options": [
+                    "Modern sans-serif",
+                    "Elegant serif"
+                ],
+                "default": "Modern sans-serif"
+            },
+            "email_signup_text": {
+                "type": "text",
+                "group": "homepage"
+            },
+            "publication_cover_style": {
+                "type": "select",
+                "options": [
+                    "Fullscreen",
+                    "Half screen"
+                ],
+                "default": "Half screen",
+                "group": "homepage"
+            },
+            "show_featured_posts": {
+                "type": "boolean",
+                "default": true,
+                "group": "homepage"
+            },
+            "featured_title": {
+                "type": "text",
+                "default": "Featured articles",
+                "group": "homepage"
+            },
+            "feed_title": {
+                "type": "text",
+                "default": "Latest",
+                "group": "homepage"
+            },
+            "feed_layout": {
+                "type": "select",
+                "options": [
+                    "Expanded",
+                    "Right thumbnail",
+                    "Text-only",
+                    "Minimal"
+                ],
+                "default": "Expanded",
+                "group": "homepage"
+            },
+            "show_author": {
+                "type": "boolean",
+                "default": true,
+                "group": "post"
+            },
+            "show_related_posts": {
+                "type": "boolean",
+                "default": true,
+                "group": "post"
+            }
+        }
     },
+    "scripts": {
+        "dev": "gulp",
+        "test": "gscan .",
+        "zip": "gulp zip"
+    },
+    "packageManager": "pnpm@11.7.0",
     "devDependencies": {
-        "@tryghost/release-utils": "0.8.1",
-        "@tryghost/theme-translations": "0.0.21",
-        "autoprefixer": "10.4.24",
+        "@tryghost/shared-theme-assets": "2.7.1",
+        "@tryghost/theme-translations": "^0.0.9",
+        "autoprefixer": "10.5.0",
         "beeper": "2.1.0",
-        "cssnano": "7.1.2",
+        "cssnano": "8.0.2",
         "gscan": "6.3.0",
         "gulp": "5.0.1",
         "gulp-concat": "2.6.1",
         "gulp-livereload": "4.0.2",
         "gulp-postcss": "10.0.0",
         "gulp-uglify": "3.0.2",
-        "gulp-zip": "6.1.0",
-        "inquirer": "14.0.2",
-        "postcss": "8.5.10",
+        "gulp-zip": "5.1.0",
+        "ordered-read-streams": "2.0.0",
+        "postcss": "8.5.15",
         "postcss-easy-import": "4.0.0",
         "pump": "3.0.4"
-    },
-    "browserslist": [
-        "defaults"
-    ],
-    "config": {
-        "posts_per_page": 10,
-        "image_sizes": {
-            "xs": { "width": 150 },
-            "s": { "width": 400 },
-            "m": { "width": 750 },
-            "l": { "width": 960 },
-            "xl": { "width": 1140 },
-            "xxl": { "width": 1920 }
-        },
-        "card_assets": true,
-        "custom": {
-            "hero_kicker": {
-                "type": "text",
-                "default": "A LETTER SERIES BY LOUIS DHARMA"
-            },
-            "hero_subtitle": {
-                "type": "text",
-                "default": "An essay series on the next ten years — why crypto matters, how Web3 startups actually win, and what self-sovereignty looks like in practice."
-            },
-            "accent_color": {
-                "type": "color",
-                "default": "#C4627A"
-            },
-            "show_petals": {
-                "type": "boolean",
-                "default": true
-            },
-            "petal_density": {
-                "type": "select",
-                "options": ["subtle", "medium", "dense"],
-                "default": "medium"
-            },
-            "show_post_excerpts": {
-                "type": "boolean",
-                "default": true
-            },
-            "footer_tagline": {
-                "type": "text",
-                "default": "Letters by Louis Dharma"
-            }
-        }
     }
 }
