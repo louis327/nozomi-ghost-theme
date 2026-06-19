@@ -1,6 +1,30 @@
 {{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
-<main class="gh-main">
-    {{> "components/post-list" feed="index" postFeedStyle=@custom.post_feed_style showTitle=true showSidebar=@custom.show_publication_info_sidebar}}
-</main>
+<section class="hero">
+  {{> petals-cluster location="hero"}}
+  <div class="label-mono">{{@custom.hero_kicker}}</div>
+  <h1 class="hero-title">{{@site.title}}</h1>
+  <p class="hero-subtitle">{{@custom.hero_subtitle}}</p>
+
+  <form class="subscribe-inline" data-members-form="signup">
+    <input type="email" name="email" placeholder="your@email.com" required />
+    <button type="submit">Subscribe →</button>
+  </form>
+  <p class="subscribe-fineprint">Weekly letters. Free. Unsubscribe anytime.</p>
+</section>
+
+<section class="post-list">
+  <div class="post-list-label label-mono">LATEST LETTERS</div>
+  {{#foreach posts}}
+    <article class="post-card">
+      <div class="meta label-mono accent">
+        {{date published_at format="MMM DD, YYYY"}}{{#if primary_tag}} · {{primary_tag.name}}{{/if}}
+      </div>
+      <h2><a href="{{url}}">{{title}}</a></h2>
+      {{#if @custom.show_post_excerpts}}
+        <p class="excerpt">{{excerpt words="32"}}</p>
+      {{/if}}
+      <div class="footer-meta">{{reading_time}} · <a href="{{url}}">Read letter →</a></div>
+    </article>
+  {{/foreach}}
+</section>
