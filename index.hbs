@@ -1,23 +1,30 @@
 {{!< default}}
 
-<main class="site-main">
+<section class="hero">
+    <div class="hero-center">
+        <div class="hero-eyebrow">A Nozomi Content Series</div>
+        <h1 class="hero-title">The Last Decade of <span class="accent-word">Freedom</span></h1>
+        <p class="hero-subtitle">Beyond the scams and speculation. <strong>Decentralisation is the last stand of true freedom</strong>, where self-sovereignty survives against centralisation and corruption. Weekly deep dives on the real case for crypto, startup ideas, and what builders should be building next.</p>
 
-    <header class="feed-header gh-canvas">
-        {{#if @custom.feed_title}}
-            <div class="feed-header-wrapper">
-                <h2 class="feed-header-title">{{@custom.feed_title}}</h2>
-            </div>
-        {{/if}}
-    </header>
-
-    <div class="post-feed{{#match @custom.feed_layout "!=" "Minimal"}} expanded{{/match}}{{#match @custom.feed_layout "Right thumbnail"}} right-thumbnail{{/match}}{{#match @custom.feed_layout "Text-only"}} text-only{{/match}} gh-feed gh-canvas">
-        {{#foreach posts}}
-            {{> "loop"}}
-        {{/foreach}}
+        <form class="hero-form" data-members-form="signup">
+            <input type="email" name="email" placeholder="Your email address" required />
+            <button type="submit">Get Access</button>
+        </form>
+        <p class="hero-fineprint">Free. No spam. Unsubscribe anytime.</p>
+        <div class="hero-ornament">望</div>
     </div>
+</section>
 
-    {{pagination}}
-
-</main>
-
-{{#contentFor "body_class"}}{{#if @site.cover_image}} with-full-cover is-head-transparent{{/if}}{{#if @member}} logged-in{{/if}}{{/contentFor}}
+{{#if posts}}
+<section class="letters-section">
+    <h2>Latest Letters</h2>
+    {{#foreach posts}}
+        <article class="letter-card">
+            <div class="meta">{{date published_at format="MMM DD, YYYY"}}{{#if primary_tag}} · {{primary_tag.name}}{{/if}}</div>
+            <h3><a href="{{url}}">{{title}}</a></h3>
+            {{#if excerpt}}<p class="excerpt">{{excerpt words="28"}}</p>{{/if}}
+            <span class="read">{{reading_time}} · <a href="{{url}}">Read letter →</a></span>
+        </article>
+    {{/foreach}}
+</section>
+{{/if}}
