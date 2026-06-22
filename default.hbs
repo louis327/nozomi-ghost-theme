@@ -18,8 +18,13 @@
 
     <nav class="top-nav">
         <a class="brand" href="{{@site.url}}">Nozomi</a>
-        <a class="back-btn" href="https://nozomi.network">Back to Nozomi</a>
+        <ul class="primary-nav">
+            {{navigation}}
+        </ul>
+        <a class="subscribe-pill" href="#/portal/signup" data-portal="signup">Subscribe</a>
     </nav>
+
+    {{> "welcome-modal"}}
 
     <main>{{{body}}}</main>
 
@@ -54,6 +59,34 @@
           });
         });
       });
+    })();
+    </script>
+
+    <script>
+    (function(){
+      const modal = document.getElementById('welcome-modal');
+      if (!modal) return;
+      // Show only if not dismissed this session
+      if (sessionStorage.getItem('nozomi_welcome_shown')) return;
+      // Slight delay for a polished feel
+      setTimeout(() => {
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        const input = modal.querySelector('input[type="email"]');
+        if (input) input.focus();
+      }, 700);
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        sessionStorage.setItem('nozomi_welcome_shown', '1');
+      }
+      modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', close));
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+      // Don't show modal again after they submit
+      const form = modal.querySelector('form');
+      if (form) form.addEventListener('submit', () => sessionStorage.setItem('nozomi_welcome_shown', '1'));
     })();
     </script>
 
