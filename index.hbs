@@ -4,7 +4,7 @@
     <div class="hero-center">
         <div class="hero-eyebrow">A Nozomi Content Series</div>
         <h1 class="hero-title">The Last Decade of <span class="accent-word">Freedom</span></h1>
-        <p class="hero-subtitle">Beyond the scams and speculation. <strong>Decentralisation is the last stand of true freedom</strong>, where self-sovereignty survives against centralisation and corruption. Weekly deep dives on the real case for crypto, startup ideas, and what builders should be building next.</p>
+        <p class="hero-subtitle">Fundraising and growth resources to help Web3 founders beat their Web2 competition. Because the builders who win the next decade decide what comes after.</p>
 
         <form class="hero-form" data-members-form="signup">
             <input type="email" name="email" placeholder="Your email address" required />
@@ -13,6 +13,44 @@
         <p class="hero-fineprint">Free. No spam. Unsubscribe anytime.</p>
         <div class="hero-ornament">望</div>
     </div>
+</section>
+
+{{!-- Latest Letters --}}
+<section class="letters-section">
+  <div class="topics-row">
+    <span class="topics-label">Topics</span>
+    <button class="topic-chip is-active" data-filter="all">All</button>
+    <button class="topic-chip" data-filter="why-crypto-exists">Why Crypto Exists</button>
+    <button class="topic-chip" data-filter="web3-growth">Web3 Growth &amp; Marketing</button>
+    <button class="topic-chip" data-filter="web3-startup-ideas">Web3 Startup Ideas</button>
+    <button class="topic-chip" data-filter="fundraising">Fundraising</button>
+    <button class="topic-chip" data-filter="self-sovereign-mindset">Self-Sovereign Mindset</button>
+    <button class="topic-chip" data-filter="network-explainers">Network &amp; Dapp Explainers</button>
+  </div>
+
+  <div class="letters-list">
+    {{#if posts}}
+      {{#foreach posts}}
+        <article class="letter-card" data-tags="{{#foreach tags}}{{slug}} {{/foreach}}">
+          {{#if feature_image}}
+            <a class="letter-card-image" href="{{url}}">
+              <img src="{{img_url feature_image size="l"}}" alt="{{title}}" loading="lazy" />
+            </a>
+          {{/if}}
+          <div class="letter-card-body">
+            {{#if primary_tag}}<div class="letter-card-meta-top">{{primary_tag.name}}</div>{{/if}}
+            <h3 class="letter-card-title"><a href="{{url}}">{{title}}</a></h3>
+            {{#if excerpt}}<p class="letter-card-excerpt">{{excerpt words="28"}}</p>{{/if}}
+            <div class="letter-card-meta-bottom">
+              {{#if primary_author}}{{primary_author.name}} · {{/if}}{{reading_time}} · {{date published_at format="MMM DD, YYYY"}}
+            </div>
+          </div>
+        </article>
+      {{/foreach}}
+    {{else}}
+      <div class="letters-empty">First letter coming soon.</div>
+    {{/if}}
+  </div>
 </section>
 
 {{!-- Why this series exists --}}
@@ -50,47 +88,6 @@
     </div>
 </section>
 
-{{!-- The Series --}}
-<section class="series-section">
-    <div class="series-header">
-        <div class="section-label">The Series</div>
-        <h2 class="section-title">One series. Two parallel tracks.</h2>
-        <p class="series-tagline">Part 1 answers "why should I care?" Part 2 answers "what can I actually build?" Together, they convert sceptics into believers and believers into builders.</p>
-    </div>
-    <div class="series-tracks">
-        <div class="track">
-            <div class="track-label">Part 1</div>
-            <h3>Verticals &amp; First Principles</h3>
-            <p class="track-desc">Too many Web3 founders are giving up on the mission for scale, removing the decentralisation first principles, which just creates Web2 with worse UI/UX. This track covers the actual verticals and the ideologies needed to build decentralisation that matters.</p>
-            <ul class="track-list">
-                <li><span class="track-arrow">→</span> Digital Currency &amp; Sound Money</li>
-                <li><span class="track-arrow">→</span> The Decentralised World Computer</li>
-                <li><span class="track-arrow">→</span> Decentralised AI (De-AI)</li>
-                <li><span class="track-arrow">→</span> Decentralised Storage &amp; Data Sovereignty</li>
-                <li><span class="track-arrow">→</span> Privacy-Preserving Algorithms</li>
-                <li><span class="track-arrow">→</span> Self-Sovereign Identity</li>
-                <li><span class="track-arrow">→</span> Decentralised Governance &amp; Network States</li>
-                <li><span class="track-arrow">→</span> The Cypherpunk Origin Story</li>
-            </ul>
-            <div class="track-count">Weekly deep dives</div>
-        </div>
-        <div class="track">
-            <div class="track-label">Part 2</div>
-            <h3>Real Use Cases &amp; Startup Ideas</h3>
-            <p class="track-desc">Every article takes a real-world problem and proposes a concrete decentralised startup idea that a founder could build today. Not abstract theory. Tangible products people would actually use.</p>
-            <ul class="track-list">
-                <li><span class="track-arrow">→</span> AI-simulated dating: avatars run thousands of compatibility scenarios before you ever meet, replacing mindless swiping with high-conviction matches</li>
-                <li><span class="track-arrow">→</span> Creator IP licensing on-chain: musicians, artists, and writers control and monetise their work without middlemen taking 80%</li>
-                <li><span class="track-arrow">→</span> Decentralised credit scoring: your financial reputation is portable, private, and not owned by Equifax</li>
-                <li><span class="track-arrow">→</span> Community-owned social networks: your feed, your algorithm, your data. No ads. No manipulation</li>
-                <li><span class="track-arrow">→</span> Autonomous AI agent economies: agents that trade, negotiate, and transact on your behalf across open protocols</li>
-                <li><span class="track-arrow">→</span> Decentralised energy markets, supply chain provenance, and more</li>
-            </ul>
-            <div class="track-count">Weekly deep dives</div>
-        </div>
-    </div>
-</section>
-
 {{!-- Final CTA --}}
 <section class="cta-section">
     <div class="cta-inner">
@@ -103,17 +100,3 @@
         </form>
     </div>
 </section>
-
-{{#if posts}}
-<section class="letters-section">
-    <h2>Latest Letters</h2>
-    {{#foreach posts}}
-        <article class="letter-card">
-            <div class="meta">{{date published_at format="MMM DD, YYYY"}}{{#if primary_tag}} · {{primary_tag.name}}{{/if}}</div>
-            <h3><a href="{{url}}">{{title}}</a></h3>
-            {{#if excerpt}}<p class="excerpt">{{excerpt words="28"}}</p>{{/if}}
-            <span class="read">{{reading_time}} · <a href="{{url}}">Read letter →</a></span>
-        </article>
-    {{/foreach}}
-</section>
-{{/if}}

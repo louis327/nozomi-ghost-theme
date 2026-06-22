@@ -215,69 +215,6 @@ html, body {
     background: linear-gradient(90deg, transparent, var(--sakura-pale), transparent);
 }
 
-/* Latest letters list */
-.letters-section {
-    position: relative;
-    z-index: 1;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 80px 24px 120px;
-}
-.letters-section h2 {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--sakura);
-    margin-bottom: 36px;
-    text-align: center;
-    font-weight: 500;
-}
-.letter-card {
-    padding: 32px 0;
-    border-bottom: 1px solid var(--border-subtle);
-}
-.letter-card:last-child {
-    border-bottom: none;
-}
-.letter-card .meta {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--sakura);
-    margin-bottom: 14px;
-}
-.letter-card h3 {
-    font-family: var(--font-display);
-    font-size: 26px;
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.015em;
-    margin: 0 0 12px;
-}
-.letter-card h3 a {
-    color: var(--text-primary);
-    text-decoration: none;
-}
-.letter-card h3 a:hover {
-    color: var(--sakura);
-}
-.letter-card .excerpt {
-    font-size: 15px;
-    line-height: 1.6;
-    color: var(--text-secondary);
-    margin: 0 0 12px;
-}
-.letter-card .read {
-    font-size: 12px;
-    color: var(--text-meta);
-}
-.letter-card .read a {
-    color: var(--sakura);
-    text-decoration: none;
-}
-
 /* ============================================================
    Section scaffolding — labels + titles shared across sections
    ============================================================ */
@@ -394,106 +331,6 @@ html, body {
 }
 
 /* ============================================================
-   Section 3 — The Series (2 columns)
-   ============================================================ */
-.series-section {
-    position: relative;
-    z-index: 1;
-    padding: 96px 24px;
-    border-top: 1px solid var(--border-subtle);
-    max-width: 1100px;
-    margin: 0 auto;
-}
-.series-header {
-    margin-bottom: 56px;
-    max-width: 720px;
-}
-.series-tagline {
-    font-size: 16px;
-    color: var(--text-secondary);
-    font-weight: 400;
-    line-height: 1.7;
-    margin: 0;
-    max-width: 640px;
-}
-.series-tracks {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-}
-.track {
-    background: rgba(0, 0, 0, 0.015);
-    border: 1px solid var(--border-subtle);
-    border-radius: 22px;
-    padding: 36px 32px;
-    position: relative;
-}
-.track-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--sakura);
-    margin-bottom: 8px;
-    opacity: 0.85;
-}
-.track h3 {
-    font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 700;
-    margin: 0 0 12px;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
-}
-.track-desc {
-    font-size: 14.5px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    font-weight: 400;
-    margin: 0 0 24px;
-}
-.track-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-}
-.track-list li {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border-subtle);
-    font-size: 14px;
-    color: var(--text-secondary);
-    font-weight: 400;
-    line-height: 1.5;
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-}
-.track-list li:last-child {
-    border-bottom: none;
-}
-.track-list .track-arrow {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--sakura);
-    flex-shrink: 0;
-}
-.track-count {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--sakura);
-    background: rgba(212, 98, 122, 0.08);
-    border: 1px solid rgba(212, 98, 122, 0.18);
-    border-radius: 999px;
-    padding: 6px 14px;
-    display: inline-block;
-    margin-top: 20px;
-}
-
-/* ============================================================
    Section 4 — Final CTA
    ============================================================ */
 .cta-section {
@@ -535,12 +372,6 @@ html, body {
 /* ============================================================
    Responsive
    ============================================================ */
-@media (max-width: 900px) {
-    .series-tracks {
-        grid-template-columns: 1fr;
-    }
-}
-
 @media (max-width: 640px) {
     .top-nav {
         padding: 16px 20px;
@@ -562,7 +393,6 @@ html, body {
     }
     .prose-section,
     .get-section,
-    .series-section,
     .cta-section {
         padding-left: 20px;
         padding-right: 20px;
@@ -583,13 +413,92 @@ html, body {
     .get-header {
         margin-bottom: 36px;
     }
-    .series-header {
-        margin-bottom: 36px;
-    }
-    .track {
-        padding: 28px 22px;
-    }
-    .track h3 {
-        font-size: 20px;
-    }
+}
+
+/* ============================================================
+   Latest Letters — card grid with topic filter
+   ============================================================ */
+.letters-section {
+  position: relative; z-index: 1;
+  max-width: 1080px; margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.topics-row {
+  display: flex; align-items: center; gap: 16px;
+  flex-wrap: wrap; margin-bottom: 32px;
+}
+.topics-label {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--text-meta); flex-shrink: 0;
+}
+.topic-chip {
+  font-family: var(--font-body); font-size: 13px;
+  padding: 8px 16px; border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: transparent; color: var(--text-primary);
+  cursor: pointer; transition: all 0.2s ease;
+}
+.topic-chip:hover { border-color: var(--sakura); }
+.topic-chip.is-active {
+  background: var(--sakura); border-color: var(--sakura); color: #fff;
+}
+
+.letters-list {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.letter-card {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 40px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  align-items: center;
+}
+.letter-card.is-hidden { display: none; }
+.letter-card-image {
+  display: block; aspect-ratio: 16 / 10;
+  overflow: hidden; border-radius: 8px;
+  background: rgba(0,0,0,0.04);
+}
+.letter-card-image img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+.letter-card-image:hover img { transform: scale(1.03); }
+.letter-card-body { display: flex; flex-direction: column; gap: 12px; }
+.letter-card-meta-top {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--sakura); margin: 0;
+}
+.letter-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.6vw, 36px);
+  font-weight: 700; line-height: 1.15;
+  letter-spacing: -0.02em; margin: 0;
+}
+.letter-card-title a { color: var(--text-primary); text-decoration: none; }
+.letter-card-title a:hover { color: var(--sakura-deep); }
+.letter-card-excerpt {
+  font-size: 15px; line-height: 1.6;
+  color: var(--text-secondary); margin: 0;
+}
+.letter-card-meta-bottom {
+  font-size: 12px; color: var(--text-meta); letter-spacing: 0.02em;
+}
+.letters-empty {
+  padding: 80px 0; text-align: center;
+  color: var(--text-meta); font-size: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 760px) {
+  .letters-section { padding: 56px 20px; }
+  .topics-row { gap: 12px; margin-bottom: 24px; }
+  .topic-chip { font-size: 12px; padding: 6px 14px; }
+  .letter-card { grid-template-columns: 1fr; gap: 16px; padding: 24px 0; }
+  .letter-card-image { aspect-ratio: 16 / 9; }
 }

@@ -33,6 +33,30 @@
 
     <script src="{{asset "built/main.min.js"}}"></script>
 
+    <script>
+    (function(){
+      const chips = document.querySelectorAll('.topic-chip');
+      const cards = document.querySelectorAll('.letter-card');
+      if (!chips.length) return;
+      chips.forEach(chip => {
+        chip.addEventListener('click', (e) => {
+          e.preventDefault();
+          chips.forEach(c => c.classList.remove('is-active'));
+          chip.classList.add('is-active');
+          const filter = chip.dataset.filter;
+          cards.forEach(card => {
+            if (filter === 'all') {
+              card.classList.remove('is-hidden');
+            } else {
+              const tags = (card.dataset.tags || '').trim().split(/\s+/);
+              card.classList.toggle('is-hidden', !tags.includes(filter));
+            }
+          });
+        });
+      });
+    })();
+    </script>
+
     {{ghost_foot}}
 </body>
 </html>
