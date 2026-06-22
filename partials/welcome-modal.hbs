@@ -1,11 +1,23 @@
 <div class="welcome-modal" id="welcome-modal" aria-hidden="true" role="dialog" aria-labelledby="welcome-modal-title">
   <div class="welcome-modal-backdrop" data-close></div>
-  <div class="welcome-modal-card">
+  <div class="welcome-modal-card welcome-modal-card--hero">
     <button class="welcome-modal-close" type="button" data-close aria-label="Close">&times;</button>
-    <div class="welcome-modal-logo">望</div>
-    <h2 class="welcome-modal-title" id="welcome-modal-title">The Last Decade of Freedom</h2>
+
+    <div class="welcome-modal-brand">
+      {{#if @site.logo}}
+        <img src="{{img_url @site.logo}}" alt="{{@site.title}}" class="welcome-modal-logo-img" />
+      {{else}}
+        <span class="welcome-modal-wordmark">Nozomi</span>
+      {{/if}}
+    </div>
+
+    <div class="welcome-modal-eyebrow">A Nozomi Content Series</div>
+
+    <h2 class="welcome-modal-title" id="welcome-modal-title">The Last Decade of <span class="accent-word">Freedom</span></h2>
+
     <p class="welcome-modal-desc">Fundraising and growth resources to help Web3 founders beat their Web2 competition. Because the builders who win the next decade decide what comes after.</p>
-    <form class="welcome-modal-form" data-members-form="signup">
+
+    <form class="welcome-modal-form welcome-modal-form--pill" data-members-form="signup">
       <input
         type="email"
         name="email"
@@ -15,8 +27,11 @@
         required
         aria-label="Email address"
       />
-      <button type="submit">Subscribe</button>
+      <button type="submit">Get Access</button>
     </form>
+
+    <p class="welcome-modal-fineprint">Free. No spam. Unsubscribe anytime.</p>
+
     <button class="welcome-modal-dismiss" type="button" data-close>No thanks</button>
   </div>
 </div>
